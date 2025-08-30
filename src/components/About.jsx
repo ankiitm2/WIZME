@@ -1,58 +1,65 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 const About = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [cursorText, setCursorText] = useState("About Me");
+  const [cursorText, setCursorText] = useState("View Project");
   const [showCustomCursor, setShowCustomCursor] = useState(false);
-  const containerRef = useRef(null);
-
-  const services = [
-    "Product Design",
-    "Brand Identity Design",
-    "UX Design",
-    "Branding",
-    "Packaging Design",
-    "Figma",
-    "Photoshop",
-  ];
-
-  const experience = [
-    { role: "Freelance", company: "GreenLeaf Co", period: "Currently" },
-    { role: "Brand Designer", company: "UrbanFit Studio", period: "2023-24" },
-    { role: "Package Designer", company: "GreenK Studio", period: "2020-22" },
-  ];
 
   const projects = [
     {
       name: "Asterisk",
       image:
         "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop",
-      behanceUrl: "https://www.behance.net/gallery/asterisk",
+      behanceUrl: "#",
     },
     {
       name: "Eooks",
       image:
         "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop",
-      behanceUrl: "https://www.behance.net/gallery/eooks",
+      behanceUrl: "#",
     },
     {
       name: "Opal",
       image:
         "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop",
-      behanceUrl: "https://www.behance.net/gallery/opal",
+      behanceUrl: "#",
     },
     {
       name: "Dune",
       image:
         "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop",
-      behanceUrl: "https://www.behance.net/gallery/dune",
+      behanceUrl: "#",
     },
     {
       name: "Oas",
       image:
         "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop",
-      behanceUrl: "https://www.behance.net/gallery/oas",
+      behanceUrl: "#",
+    },
+    {
+      name: "Nova",
+      image:
+        "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop",
+      behanceUrl: "#",
+    },
+    {
+      name: "Luna",
+      image:
+        "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop",
+      behanceUrl: "#",
+    },
+    {
+      name: "Sol",
+      image:
+        "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop",
+      behanceUrl: "#",
+    },
+    {
+      name: "Orbit",
+      image:
+        "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop",
+      behanceUrl: "#",
     },
   ];
 
@@ -76,15 +83,9 @@ const About = () => {
     setShowCustomCursor(false);
   };
 
-  const handleProfileHover = () => {
-    setShowCustomCursor(true);
-    setCursorText("About Me");
-  };
-
   return (
     <section
       id="about"
-      ref={containerRef}
       className="py-20 px-6 bg-gradient-to-b from-gray-900 to-black"
     >
       {/* Custom Cursor */}
@@ -107,187 +108,364 @@ const About = () => {
           <h3 className="text-2xl font-semibold text-gray-300 mb-8 text-center">
             Recent Projects
           </h3>
-          <div className="parent">
-            <div class="div4">
-              <img
-                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop"
-                alt=""
-                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
-              />
-            </div>
-            <div className="div5">
-              {" "}
-              <img
-                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop"
-                alt=""
-                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
-              />
-            </div>
-            <div className="div6">
-              {" "}
-              <img
-                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop"
-                alt=""
-                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
-              />
-            </div>
-            <div className="div10">
-              {" "}
-              <img
-                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop"
-                alt=""
-                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
-              />
-            </div>
-            <div className="div11">
-              {" "}
-              <img
-                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop"
-                alt=""
-                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
-              />
-            </div>
-            <div className="div12">
-              {" "}
-              <img
-                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop"
-                alt=""
-                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
-              />
-            </div>
-            <div className="div13">
-              {" "}
-              <img
-                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop"
-                alt=""
-                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
-              />
-            </div>
-            <div className="div14">
-              {" "}
-              <img
-                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop"
-                alt=""
-                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
-              />
-            </div>
-            <div className="div15">
-              {" "}
-              <img
-                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=300&h=400&fit=crop"
-                alt=""
-                className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
-              />
+
+          {/* Hive Grid Container */}
+          <div className="hive-grid-container">
+            <div className="hive-grid">
+              {/* Row 1 */}
+              <div className="hive-cell hive-cell-1">
+                <a
+                  href={projects[0]?.behanceUrl || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hive-item group"
+                  onMouseEnter={() => handleProjectHover(0)}
+                  onMouseLeave={handleProjectLeave}
+                >
+                  <img
+                    src={projects[0]?.image}
+                    alt={projects[0]?.name}
+                    className="hive-image"
+                  />
+                  <div className="hive-overlay">
+                    <div className="hive-title">{projects[0]?.name}</div>
+                  </div>
+                </a>
+              </div>
+
+              {/* <div className="hive-cell hive-cell-2">
+                <a
+                  href={projects[1]?.behanceUrl || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hive-item group"
+                  onMouseEnter={() => handleProjectHover(1)}
+                  onMouseLeave={handleProjectLeave}
+                >
+                  <img
+                    src={projects[1]?.image}
+                    alt={projects[1]?.name}
+                    className="hive-image"
+                  />
+                  <div className="hive-overlay">
+                    <div className="hive-title">{projects[1]?.name}</div>
+                  </div>
+                </a>
+              </div> */}
+
+              <div className="hive-cell hive-cell-3">
+                <a
+                  href={projects[2]?.behanceUrl || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hive-item group"
+                  onMouseEnter={() => handleProjectHover(2)}
+                  onMouseLeave={handleProjectLeave}
+                >
+                  <img
+                    src={projects[2]?.image}
+                    alt={projects[2]?.name}
+                    className="hive-image"
+                  />
+                  <div className="hive-overlay">
+                    <div className="hive-title">{projects[2]?.name}</div>
+                  </div>
+                </a>
+              </div>
+
+              {/* Row 2 */}
+              <div className="hive-cell hive-cell-4">
+                <a
+                  href={projects[3]?.behanceUrl || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hive-item group"
+                  onMouseEnter={() => handleProjectHover(3)}
+                  onMouseLeave={handleProjectLeave}
+                >
+                  <img
+                    src={projects[3]?.image}
+                    alt={projects[3]?.name}
+                    className="hive-image"
+                  />
+                  <div className="hive-overlay">
+                    <div className="hive-title">{projects[3]?.name}</div>
+                  </div>
+                </a>
+              </div>
+
+              <div className="hive-cell hive-cell-5">
+                <a
+                  href={projects[4]?.behanceUrl || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hive-item group"
+                  onMouseEnter={() => handleProjectHover(4)}
+                  onMouseLeave={handleProjectLeave}
+                >
+                  <img
+                    src={projects[4]?.image}
+                    alt={projects[4]?.name}
+                    className="hive-image"
+                  />
+                  <div className="hive-overlay">
+                    <div className="hive-title">{projects[4]?.name}</div>
+                  </div>
+                </a>
+              </div>
+
+              {/* <div className="hive-cell hive-cell-6">
+                <a
+                  href={projects[5]?.behanceUrl || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hive-item group"
+                  onMouseEnter={() => handleProjectHover(5)}
+                  onMouseLeave={handleProjectLeave}
+                >
+                  <img
+                    src={projects[5]?.image}
+                    alt={projects[5]?.name}
+                    className="hive-image"
+                  />
+                  <div className="hive-overlay">
+                    <div className="hive-title">{projects[5]?.name}</div>
+                  </div>
+                </a>
+              </div> */}
+
+              {/* Row 3 */}
+              <div className="hive-cell hive-cell-7">
+                <a
+                  href={projects[6]?.behanceUrl || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hive-item group"
+                  onMouseEnter={() => handleProjectHover(6)}
+                  onMouseLeave={handleProjectLeave}
+                >
+                  <img
+                    src={projects[6]?.image}
+                    alt={projects[6]?.name}
+                    className="hive-image"
+                  />
+                  <div className="hive-overlay">
+                    <div className="hive-title">{projects[6]?.name}</div>
+                  </div>
+                </a>
+              </div>
+
+              <div className="hive-cell hive-cell-8">
+                <a
+                  href={projects[7]?.behanceUrl || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hive-item group"
+                  onMouseEnter={() => handleProjectHover(7)}
+                  onMouseLeave={handleProjectLeave}
+                >
+                  <img
+                    src={projects[7]?.image}
+                    alt={projects[7]?.name}
+                    className="hive-image"
+                  />
+                  <div className="hive-overlay">
+                    <div className="hive-title">{projects[7]?.name}</div>
+                  </div>
+                </a>
+              </div>
+
+              <div className="hive-cell hive-cell-9">
+                <a
+                  href={projects[8]?.behanceUrl || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hive-item group"
+                  onMouseEnter={() => handleProjectHover(8)}
+                  onMouseLeave={handleProjectLeave}
+                >
+                  <img
+                    src={projects[8]?.image}
+                    alt={projects[8]?.name}
+                    className="hive-image"
+                  />
+                  <div className="hive-overlay">
+                    <div className="hive-title">{projects[8]?.name}</div>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
-          {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {projects.map((project, index) => (
-              <a
-                key={project.name}
-                href={project.behanceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block rounded-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl cursor-none"
-                onMouseEnter={() => handleProjectHover(index)}
-                onMouseLeave={handleProjectLeave}
-              >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  className="w-full h-64 object-cover transition-all duration-500 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-                  <div className="text-white font-semibold text-center transition-all duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400">
-                    {project.name}
-                  </div>
-                </div>
-
-
-                <div className="absolute top-3 right-3 bg-blue-600/90 text-white px-2 py-1 rounded text-xs font-medium backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  Behance
-                </div>
-              </a>
-            ))}
-          </div> */}
         </div>
       </div>
+
       <style jsx>{`
-        @keyframes gradientShift {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
+        .hive-grid-container {
+          display: flex;
+          justify-content: center;
+          margin: 0 auto;
+          width: 100%;
         }
-      `}</style>
-      <style jsx>
-        {`
-          .parent {
-            display: grid;
-            grid-template-columns: repeat(3, 2fr);
-            grid-template-rows: repeat(3, 1fr);
+
+        .hive-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(4, 1fr);
+          gap: 4px;
+          width: 100%;
+        }
+
+        .hive-cell {
+          position: relative;
+          overflow: hidden;
+          border-radius: 12px;
+          transition: all 0.3s ease;
+        }
+
+        .hive-item {
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: relative;
+          cursor: none;
+        }
+
+        .hive-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: grayscale(100%) contrast(110%);
+          transition: all 0.5s ease;
+        }
+
+        .hive-item:hover .hive-image {
+          filter: grayscale(0%) contrast(100%);
+          transform: scale(1.1);
+        }
+
+        .hive-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.8) 0%,
+            transparent 100%
+          );
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          padding: 16px;
+        }
+
+        .hive-item:hover .hive-overlay {
+          opacity: 1;
+        }
+
+        .hive-title {
+          color: white;
+          font-weight: 600;
+          font-size: 1.1rem;
+          text-align: center;
+          transform: translateY(10px);
+          transition: transform 0.3s ease;
+        }
+
+        .hive-item:hover .hive-title {
+          transform: translateY(0);
+        }
+
+        /* Position each cell in the hive pattern */
+        .hive-cell-1 {
+          grid-column: 2 / 3;
+          grid-row: 1 / 3;
+        }
+
+        .hive-cell-2 {
+          grid-column: 3 / 4;
+          grid-row: 1 / 3;
+        }
+
+        .hive-cell-3 {
+          grid-column: 4 / 5;
+          grid-row: 2 / 4;
+        }
+
+        .hive-cell-4 {
+          grid-column: 1 / 2;
+          grid-row: 2 / 4;
+        }
+
+        .hive-cell-5 {
+          grid-column: 2 / 3;
+          grid-row: 3 / 5;
+        }
+
+        .hive-cell-7 {
+          grid-column: 4 / 5;
+          grid-row: 4 / 6;
+        }
+
+        .hive-cell-8 {
+          grid-column: 1 / 2;
+          grid-row: 4 / 6;
+        }
+
+        .hive-cell-9 {
+          grid-column: 2 / 3;
+          grid-row: 5 / 7;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .hive-grid {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(6, 1fr);
             gap: 8px;
           }
 
-          .div4 {
-            grid-row: span 2 / span 2;
-            grid-column-start: 3;
+          .hive-cell-1 {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
           }
 
-          .div5 {
-            grid-row: span 2 / span 2;
-            grid-column-start: 3;
-            grid-row-start: 3;
+          .hive-cell-3 {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
           }
 
-          .div6 {
-            grid-row: span 2 / span 2;
-            grid-column-start: 3;
-            grid-row-start: 5;
+          .hive-cell-4 {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
           }
 
-          .div10 {
-            grid-column: span 2 / span 2;
-            grid-column-start: 4;
-            grid-row-start: 2;
+          .hive-cell-5 {
+            grid-column: 1 / 2;
+            grid-row: 3 / 4;
           }
 
-          .div11 {
-            grid-column: span 2 / span 2;
-            grid-column-start: 4;
-            grid-row-start: 3;
+          .hive-cell-6 {
+            grid-column: 2 / 3;
+            grid-row: 3 / 4;
           }
 
-          .div12 {
-            grid-column: span 2 / span 2;
-            grid-column-start: 4;
-            grid-row-start: 4;
+          .hive-cell-7 {
+            grid-column: 1 / 2;
+            grid-row: 4 / 5;
           }
 
-          .div13 {
-            grid-column: span 2 / span 2;
-            grid-column-start: 1;
-            grid-row-start: 2;
+          .hive-cell-8 {
+            grid-column: 2 / 3;
+            grid-row: 4 / 5;
           }
 
-          .div14 {
-            grid-column: span 2 / span 2;
-            grid-column-start: 1;
-            grid-row-start: 3;
+          .hive-cell-9 {
+            grid-column: 1 / 2;
+            grid-row: 5 / 6;
           }
-
-          .div15 {
-            grid-column: span 2 / span 2;
-            grid-column-start: 1;
-            grid-row-start: 4;
-          }
-        `}
-      </style>
+        }
+      `}</style>
     </section>
   );
 };
