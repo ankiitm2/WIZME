@@ -1,0 +1,35 @@
+/* src/index.css */
+
+@import "tailwindcss";
+
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"); */
+
+body {
+  font-family: "Inter", sans-serif;
+  cursor: none;
+}
+
+/* Make sure clickable elements still show pointer cursor */
+a,
+button,
+[role="button"] {
+  cursor: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4f46e5;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6366f1;
+}
