@@ -228,7 +228,10 @@ const Hero = ({ isVisible }) => {
             : "opacity-0 translate-y-8"
         }`}
       >
-        <div className="pre-content">Crafting Unique Brand Identities</div>
+        <div className="pre-content relative flex justify-center items-center">
+          <span className="w-2 h-2 rounded-full bg-gray-50 mr-2 blink-dot"></span>
+          Crafting Unique Brand Identities
+        </div>
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent leading-tight">
           Crafting Unique Brand Identities
         </h1>

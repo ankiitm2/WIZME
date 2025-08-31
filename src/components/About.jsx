@@ -75,7 +75,13 @@ const About = () => {
   const handleProjectHover = (index) => {
     setHoveredIndex(index);
     setShowCustomCursor(true);
-    setCursorText("View Project");
+    // setCursorText("View Project");
+  };
+
+  const handleProjectHoverIndex = (index) => {
+    setHoveredIndex(index);
+    setShowCustomCursor(true);
+    setCursorText("About Me");
   };
 
   const handleProjectLeave = () => {
@@ -91,7 +97,7 @@ const About = () => {
       {/* Custom Cursor */}
       {showCustomCursor && (
         <div
-          className="fixed w-20 h-20 bg-black/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white text-xs font-medium text-center pointer-events-none z-50 transition-opacity duration-300 border border-white/10"
+          className="fixed w-fit h-fit p-2 px-4 rounded-md flex items-center justify-center text-white font-light text-center pointer-events-none z-50 transition-opacity duration-300 glassMorph"
           style={{
             left: `${mousePosition.x}px`,
             top: `${mousePosition.y}px`,
@@ -102,7 +108,7 @@ const About = () => {
         </div>
       )}
 
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-full mx-auto">
         {/* Project grid */}
         <div className="mt-16">
           <h3 className="text-2xl font-semibold text-gray-300 mb-8 text-center">
@@ -119,7 +125,7 @@ const About = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hive-item group"
-                  onMouseEnter={() => handleProjectHover(0)}
+                  onMouseEnter={() => handleProjectHoverIndex(0)}
                   onMouseLeave={handleProjectLeave}
                 >
                   <img
@@ -300,6 +306,50 @@ const About = () => {
       </div>
 
       <style jsx>{`
+        .glassMorph {
+          background: rgba(255, 255, 255, 0.24);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-radius: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 0 2px 1px rgba(255, 255, 255, 0.1);
+          // position: relative;
+          overflow: hidden;
+        }
+
+        .glassMorph::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.8),
+            transparent
+          );
+        }
+
+        .glassMorph::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 1px;
+          height: 100%;
+          background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.8),
+            transparent,
+            rgba(255, 255, 255, 0.3)
+          );
+        }
+
         .hive-grid-container {
           display: flex;
           justify-content: center;
@@ -309,9 +359,9 @@ const About = () => {
 
         .hive-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          grid-template-rows: repeat(4, 1fr);
-          gap: 4px;
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 250px; /* uniform height */
+          gap: 8px;
           width: 100%;
         }
 
@@ -378,7 +428,7 @@ const About = () => {
 
         /* Position each cell in the hive pattern */
         .hive-cell-1 {
-          grid-column: 2 / 3;
+          grid-column: 2 / 4;
           grid-row: 1 / 3;
         }
 
@@ -398,7 +448,7 @@ const About = () => {
         }
 
         .hive-cell-5 {
-          grid-column: 2 / 3;
+          grid-column: 2 / 4;
           grid-row: 3 / 5;
         }
 
@@ -413,7 +463,7 @@ const About = () => {
         }
 
         .hive-cell-9 {
-          grid-column: 2 / 3;
+          grid-column: 2 / 4;
           grid-row: 5 / 7;
         }
 
