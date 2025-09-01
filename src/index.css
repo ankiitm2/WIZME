@@ -24,7 +24,54 @@ body {
 }
 
 /* ------------------------------------------------------- */
-/* 
+/* Rotating Border Component Styles - Fixed */
+.rotating-border-wrapper {
+  position: relative;
+  display: inline-block;
+  background: transparent;
+  isolation: isolate; /* Creates a new stacking context */
+}
+
+.rotating-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.rotating-border span {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    var(--border-color),
+    var(--border-color),
+    transparent
+  );
+
+  /* Create the border effect by masking */
+  mask: linear-gradient(white, white) content-box, linear-gradient(white, white);
+  -webkit-mask: linear-gradient(white, white) content-box,
+    linear-gradient(white, white);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  padding: var(--border-width);
+}
+
+.rotating-border-content {
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: calc(inherit - var(--border-width));
+}
 /* ------------------------------------------------------------- */
 
 /* Make sure clickable elements still show pointer cursor */
