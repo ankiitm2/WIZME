@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 const Hero = ({ isVisible }) => {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
+  const preContentRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -228,10 +229,39 @@ const Hero = ({ isVisible }) => {
             : "opacity-0 translate-y-8"
         }`}
       >
-        <div className="pre-content relative flex justify-center items-center">
-          <span className="w-2 h-2 rounded-full bg-gray-50 mr-2 blink-dot"></span>
-          Crafting Unique Brand Identities
+        <div
+          className="pre-content-wrapper relative flex justify-center items-center mb-6 mx-auto"
+          style={{ width: "fit-content" }}
+        >
+          <div
+            className="pre-content-wrapper"
+            style={{
+              display: "inline-block",
+              position: "relative",
+              margin: "0 auto 1.5rem",
+            }}
+          >
+            <div
+              className="pre-content"
+              style={{
+                position: "relative",
+                display: "inline-flex",
+                alignItems: "center",
+                padding: "0.5rem 1.5rem",
+                fontSize: "1.1rem",
+                color: "#f0f0f0",
+                background: "rgba(0, 0, 0, 0.4)",
+                borderRadius: "50px",
+                overflow: "hidden",
+                zIndex: 1,
+              }}
+            >
+              <span className="w-2 h-2 rounded-full bg-gray-50 mr-2 blink-dot"></span>
+              Crafting Unique Brand Identities
+            </div>
+          </div>
         </div>
+
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent leading-tight">
           Crafting Unique Brand Identities
         </h1>
