@@ -259,18 +259,16 @@ const Hero = ({ isVisible }) => {
             : "opacity-0 translate-y-8"
         }`}
       >
-        <div className="rotating-border-wrapper inline-block mb-6 mx-auto relative">
+        <div className="rotating-border-wrapper rounded-full inline-block mb-6 mx-auto relative">
           {/* Rotating border element */}
-          <div ref={borderRef} className="rotating-border"></div>
+          {/* <div ref={borderRef} className="rotating-border"></div> */}
 
-          <SequentialRunningBorder borderColor="#3b82f6">
-            <div className="flex items-center px-6 py-2">
-              <span className="w-2 h-2 rounded-full bg-gray-50 mr-2 blink-dot"></span>
-              <span className="text-gray-200 text-lg">
-                Crafting Unique Brand Identities
-              </span>
-            </div>
-          </SequentialRunningBorder>
+          <div className="rotating-border flex items-center px-6 py-4">
+            <span className="w-2 h-2 rounded-full bg-gray-50 mr-2 blink-dot"></span>
+            <span className="txt-content text-gray-200 text-lg">
+              Crafting Unique Brand Identities
+            </span>
+          </div>
         </div>
 
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent leading-tight">

@@ -5,117 +5,115 @@ const SequentialRunningBorder = ({
   borderColor = "#3b82f6",
   backgroundColor = "transparent",
   borderWidth = 3,
-  animationSpeed = "4s",
+  animationSpeed = "12s",
   borderRadius = "12px",
   className = "",
+  borderLength = "30%", // New prop to control the length of the running border
 }) => {
   return (
     <div
       className={`relative overflow-hidden ${className}`}
-      style={{ borderRadius }}
+      style={{
+        borderRadius,
+        padding: `${borderWidth}px`,
+        backgroundColor,
+      }}
     >
-      {/* Top border runner */}
+      {/* Runner - Increased width version */}
       <div
-        className="absolute top-0 left-0 h-0.5 w-20 opacity-80"
+        className="absolute top-0 left-0 w-full h-full"
         style={{
-          background: `linear-gradient(90deg, transparent, ${borderColor}, transparent)`,
-          animation: `runTop ${animationSpeed} linear infinite`,
-          height: `${borderWidth}px`,
-        }}
-      />
-
-      {/* Right border runner */}
-      <div
-        className="absolute top-0 right-0 w-0.5 h-20 opacity-80"
-        style={{
-          background: `linear-gradient(180deg, transparent, ${borderColor}, transparent)`,
-          animation: `runRight ${animationSpeed} linear infinite ${
-            parseFloat(animationSpeed) * 0.25
-          }s`,
-          width: `${borderWidth}px`,
-        }}
-      />
-
-      {/* Bottom border runner */}
-      <div
-        className="absolute bottom-0 right-0 h-0.5 w-20 opacity-80"
-        style={{
-          background: `linear-gradient(270deg, transparent, ${borderColor}, transparent)`,
-          animation: `runBottom ${animationSpeed} linear infinite ${
-            parseFloat(animationSpeed) * 0.5
-          }s`,
-          height: `${borderWidth}px`,
-        }}
-      />
-
-      {/* Left border runner */}
-      <div
-        className="absolute bottom-0 left-0 w-0.5 h-20 opacity-80"
-        style={{
-          background: `linear-gradient(0deg, transparent, ${borderColor}, transparent)`,
-          animation: `runLeft ${animationSpeed} linear infinite ${
-            parseFloat(animationSpeed) * 0.75
-          }s`,
-          width: `${borderWidth}px`,
-        }}
-      />
-
-      {/* Content */}
-      <div
-        className="relative z-10"
-        style={{
-          backgroundColor,
-          margin: `${borderWidth}px`,
-          borderRadius: `calc(${borderRadius} - ${borderWidth}px)`,
-          minHeight: "60px",
+          borderRadius,
+          pointerEvents: "none",
         }}
       >
+        <div
+          className="absolute"
+          style={{
+            width: borderLength, // Use the borderLength prop
+            height: `${borderWidth}px`,
+            background: borderColor,
+            animation: `moveBorder ${animationSpeed} linear infinite`,
+          }}
+        />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10" style={{ borderRadius }}>
         {children}
       </div>
 
       <style jsx>{`
-        @keyframes runTop {
+        @keyframes moveBorder {
           0% {
-            left: -80px;
+            top: -${borderWidth}px;
+            left: -${borderLength};
+            transform: rotate(0deg);
           }
-          25% {
+          14% {
+            top: -${borderWidth}px;
             left: 100%;
+            transform: rotate(0deg);
           }
-          100% {
+          15% {
+            top: -${borderWidth}px;
+            left: calc(100% - ${borderWidth}px);
+            transform: rotate(90deg);
+          }
+          29% {
+            top: 100%;
+            left: calc(100% - ${borderWidth}px);
+            transform: rotate(90deg);
+          }
+          30% {
+            top: calc(100% - ${borderWidth}px);
             left: 100%;
+            transform: rotate(180deg);
           }
-        }
-        @keyframes runRight {
-          0%,
-          25% {
-            top: -80px;
+          44% {
+            top: calc(100% - ${borderWidth}px);
+            left: -${borderLength};
+            transform: rotate(180deg);
           }
-          50% {
+          45% {
             top: 100%;
+            left: -${borderWidth}px;
+            transform: rotate(270deg);
           }
-          100% {
-            top: 100%;
+          59% {
+            top: -${borderLength};
+            left: -${borderWidth}px;
+            transform: rotate(270deg);
           }
-        }
-        @keyframes runBottom {
-          0%,
-          50% {
-            right: -80px;
+          60% {
+            top: -${borderWidth}px;
+            left: -${borderWidth}px;
+            transform: rotate(360deg);
+          }
+          74% {
+            top: -${borderWidth}px;
+            left: 100%;
+            transform: rotate(360deg);
           }
           75% {
-            right: 100%;
+            top: -${borderWidth}px;
+            left: calc(100% - ${borderWidth}px);
+            transform: rotate(450deg);
+          }
+          89% {
+            top: 100%;
+            left: calc(100% - ${borderWidth}px);
+            transform: rotate(450deg);
+          }
+          90% {
+            top: calc(100% - ${borderWidth}px);
+            left: 100%;
+            transform: rotate(540deg);
           }
           100% {
-            right: 100%;
-          }
-        }
-        @keyframes runLeft {
-          0%,
-          75% {
-            bottom: -80px;
-          }
-          100% {
-            bottom: 100%;
+            top: calc(100% - ${borderWidth}px);
+            left: 100%;
+            transform: rotate(540deg);
           }
         }
       `}</style>

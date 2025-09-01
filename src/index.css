@@ -24,57 +24,77 @@ body {
 }
 
 /* ------------------------------------------------------- */
-/* Rotating Border Component Styles - Fixed */
+
 .rotating-border-wrapper {
   position: relative;
-  display: inline-block;
-  background: transparent;
-  isolation: isolate; /* Creates a new stacking context */
-}
-
-.rotating-border {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: inherit;
-  overflow: hidden;
   z-index: 0;
+  height: 40px;
+  overflow: hidden;
+  border: none !important;
+  /* padding: 0 !important; */
+  background: transparent !important;
+  color: #656565;
+  /* background: white; */
+  /* border-radius: 8px; */
+  width: fit-content;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  box-shadow: 0 4px 50px 0 rgb(0 0 0 / 7%);
+  transition: 0.2s all linear;
+  text-decoration: initial;
 }
 
-.rotating-border span {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  height: 100%;
-  background: conic-gradient(
-    from 0deg,
-    transparent,
-    var(--border-color),
-    var(--border-color),
-    transparent
-  );
-
-  /* Create the border effect by masking */
-  mask: linear-gradient(white, white) content-box, linear-gradient(white, white);
-  -webkit-mask: linear-gradient(white, white) content-box,
-    linear-gradient(white, white);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-
-  padding: var(--border-width);
-}
-
-.rotating-border-content {
+.rotating-border-wrapper .rotating-border {
   position: relative;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: calc(inherit - var(--border-width));
+  height: calc(100% - 4px);
+  width: 20rem;
+  top: 2px;
+  left: 2px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+  /* color: white; */
+  background: black;
+}
+
+.rotating-border-wrapper:after {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 50% 50%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  -webkit-animation: rotate 3s linear infinite;
+  animation: rotate 3s linear infinite;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 /* ------------------------------------------------------------- */
 
-/* Make sure clickable elements still show pointer cursor */
 a,
 button,
 [role="button"] {
