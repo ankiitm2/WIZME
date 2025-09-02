@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useLocation, Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,10 +17,10 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: "Services", href: "#services" },
-    { name: "Projects", href: "#works" },
-    { name: "Testimonials", href: "#reviews" },
-    { name: "Contact", href: "#contact" },
+    { name: "Services", href: "/#services" },
+    { name: "Projects", href: "/#works" },
+    { name: "Testimonials", href: "/#reviews" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const toggleMenu = () => {
@@ -27,6 +29,13 @@ const Navbar = () => {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const isActiveLink = (href) => {
+    if (href === "/contact") {
+      return location.pathname === "/contact";
+    }
+    return location.hash === href.substring(1);
   };
 
   return (
@@ -41,23 +50,33 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="#" className="">
+            <Link to="/" className="">
               <img src="/wizme.png" alt="logo" width="72px" />
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-3">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
-                  href={item.href}
-                  className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-light transition-colors duration-200 relative group"
+                  to={item.href}
+                  className={`px-3 py-2 rounded-md text-sm font-light transition-colors duration-200 relative group ${
+                    isActiveLink(item.href)
+                      ? "text-white"
+                      : "text-gray-300 hover:text-white"
+                  }`}
                 >
                   {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-500 transition-all duration-300 group-hover:w-full"></span>
-                </a>
+                  <span
+                    className={`absolute bottom-0 left-0 h-0.5 bg-purple-500 transition-all duration-300 ${
+                      isActiveLink(item.href)
+                        ? "w-full"
+                        : "w-0 group-hover:w-full"
+                    }`}
+                  ></span>
+                </Link>
               ))}
               <button className="RotateBtn text-sm px-6 py-2">
                 <span></span>
@@ -90,17 +109,21 @@ const Navbar = () => {
         <div className="md:hidden bg-black/95 backdrop-blur-lg border-b border-gray-800">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.href}
+                to={item.href}
                 onClick={closeMenu}
-                className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+                  isActiveLink(item.href)
+                    ? "text-white"
+                    : "text-gray-300 hover:text-white"
+                }`}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
             <div className="pt-4 pb-3 border-t border-gray-700">
-              <button className="RotateBtn ">
+              <button className="RotateBtn">
                 <span></span>
                 <span></span>
                 <span></span>

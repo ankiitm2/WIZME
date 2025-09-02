@@ -34,7 +34,7 @@ const PortfolioLanding = () => {
   return (
     <div className="bg-black text-white min-h-screen font-sans overflow-x-hidden">
       <CursorFollower />
-      <Navbar />
+      {/* <Navbar /> */}
       <Hero isVisible={isVisible} />
       <About isVisible={isVisible} />
 
