@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 import { gsap } from "gsap";
-import SequentialRunningBorder from "./RotatingBorderButton";
+import { Button } from "./ui/moving-border";
 
 const Hero = ({ isVisible }) => {
   const canvasRef = useRef(null);
@@ -259,10 +259,7 @@ const Hero = ({ isVisible }) => {
             : "opacity-0 translate-y-8"
         }`}
       >
-        <div className="rotating-border-wrapper rounded-full inline-block mb-6 mx-auto relative">
-          {/* Rotating border element */}
-          {/* <div ref={borderRef} className="rotating-border"></div> */}
-
+        {/* <div className="rotating-border-wrapper rounded-full inline-block mb-6 mx-auto relative">
           <div className="rotating-border flex items-center px-6 py-4">
             <span className="w-2 h-2 rounded-full bg-gray-50 mr-2 blink-dot"></span>
             <span className="txt-content text-gray-200 text-lg">
@@ -270,23 +267,38 @@ const Hero = ({ isVisible }) => {
             </span>
           </div>
         </div>
-
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-300 bg-clip-text text-transparent leading-tight">
+        */}
+        <Button borderRadius="1.75rem" className="bg-black">
+          {" "}
+          <span className="w-2 h-2 rounded-full bg-gray-50 mr-2 blink-dot"></span>
           Crafting Unique Brand Identities
-        </h1>
-        <p className="text-2xl md:text-3xl font-semibold mb-4 text-gray-200">
-          Branding that you need Indeed
-        </p>
-        <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-          Elevate your brand with custom identity and package design. Showcase
-          your story through bold visuals and strategic design solutions.
+        </Button>
+        <div className="flex text-center max-auto justify-center">
+          <h1 className="text-5xl md:text-7xl font-semibold text-white mb-6 bg-clip-text leading-tight faded-text w-3/4">
+            Branding that you need Indeed
+          </h1>
+        </div>
+
+        <p className="text-lg md:text-xl text-white mb-12 mx-auto leading-relaxed">
+          At our UI/UX and design studio, we create branding experiences that go
+          beyond just visuals. From logos and typography to digital touchpoints,
+          we design identities that not only look stunning but also build trust,
+          consistency, and long-term recognition for your business.
         </p>
 
-        <div className="flex gap-6 justify-center mb-16 flex-wrap">
-          <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-500/30">
+        <div className="flex gap-10 justify-center mb-16 flex-wrap">
+          <button className="RotateBtn RotateBtn-gray text-sm px-6 py-2">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
             Get Started Now
           </button>
-          <button className="border border-purple-400 text-purple-200 hover:bg-purple-500/20 font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg shadow-purple-500/10">
+          <button className="RotateBtn RotateBtn-gray text-sm px-6 py-2">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
             See Projects
           </button>
         </div>

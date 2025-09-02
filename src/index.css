@@ -75,11 +75,11 @@ body {
   background-image: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 1) 50%,
+    #ff970c 50%,
     rgba(255, 255, 255, 0) 100%
   );
-  -webkit-animation: rotate 3s linear infinite;
-  animation: rotate 3s linear infinite;
+  -webkit-animation: rotate 5s linear infinite;
+  animation: rotate 5s linear infinite;
 }
 
 @-webkit-keyframes rotate {
@@ -93,6 +93,129 @@ body {
     transform: rotate(360deg);
   }
 }
+
+/* ---------------------------- */
+
+.RotateBtn {
+  position: relative;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: 8px;
+  border: solid 1px gray;
+}
+
+.RotateBtn span:nth-child(1) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 8px;
+  background: linear-gradient(to right, #ff970c, #ff970c);
+  animation: animate1 2s linear infinite;
+  box-shadow: #ff970c63 0px -23px 25px 0px inset,
+    #ff970c63 0px -36px 30px 0px inset, #ff970c63 0px -79px 40px 0px inset,
+    #ff970c63 0px 2px 1px, #ff970c63 0px 4px 2px, #ff970c63 0px 8px 4px,
+    #ff970c63 0px 16px 8px, #ff970c63 0px 32px 16px;
+}
+
+@keyframes animate1 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.RotateBtn span:nth-child(2) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(to bottom, #ff970c, #ff970c);
+  animation: animate2 2s linear infinite;
+  animation-delay: 1s;
+  box-shadow: #ff970c63 0px -23px 25px 0px inset,
+    #ff970c63 0px -36px 30px 0px inset, #ff970c63 0px -79px 40px 0px inset,
+    #ff970c63 0px 2px 1px, #ff970c63 0px 4px 2px, #ff970c63 0px 8px 4px,
+    #ff970c63 0px 16px 8px, #ff970c63 0px 32px 16px;
+}
+@keyframes animate2 {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.RotateBtn span:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to left, #ff970c, #ff970c);
+  animation: animate3 2s linear infinite;
+  box-shadow: #ff970c63 0px -23px 25px 0px inset,
+    #ff970c63 0px -36px 30px 0px inset, #ff970c63 0px -79px 40px 0px inset,
+    #ff970c63 0px 2px 1px, #ff970c63 0px 4px 2px, #ff970c63 0px 8px 4px,
+    #ff970c63 0px 16px 8px, #ff970c63 0px 32px 16px;
+}
+
+@keyframes animate3 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.RotateBtn span:nth-child(4) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(to top, #171618, #ff970c);
+  animation: animate4 2s linear infinite;
+  animation-delay: 1s;
+  box-shadow: #ff970c63 0px -23px 25px 0px inset,
+    #ff970c63 0px -36px 30px 0px inset, #ff970c63 0px -79px 40px 0px inset,
+    #ff970c63 0px 2px 1px, #ff970c63 0px 4px 2px, #ff970c63 0px 8px 4px,
+    #ff970c63 0px 16px 8px, #ff970c63 0px 32px 16px;
+}
+
+@keyframes animate4 {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.RotateBtn-gray span:nth-child(1) {
+  background: linear-gradient(to right, #949494, #949494);
+  box-shadow: #949494 0px 15px 25px, #949494 0px 5px 10px;
+}
+.RotateBtn-gray span:nth-child(2) {
+  background: linear-gradient(to right, #949494, #949494);
+  box-shadow: #949494 0px 15px 25px, #949494 0px 5px 10px;
+}
+.RotateBtn-gray span:nth-child(3) {
+  background: linear-gradient(to right, #949494, #949494);
+  box-shadow: #949494 0px 15px 25px, #949494 0px 5px 10px;
+}
+.RotateBtn-gray span:nth-child(4) {
+  background: linear-gradient(to right, #949494, #949494);
+  box-shadow: #949494 0px 15px 25px, #949494 0px 5px 10px;
+}
+
 /* ------------------------------------------------------------- */
 
 a,
@@ -117,4 +240,9 @@ button,
 
 ::-webkit-scrollbar-thumb:hover {
   background: #6366f1;
+}
+
+.faded-text {
+  mask-image: linear-gradient(to right, white, rgb(171 171 171 / 40%));
+  -webkit-mask-image: linear-gradient(to right, white, rgb(171 171 171 / 40%));
 }
