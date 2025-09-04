@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [tailwindcss(), react()],
-  base: process.env.NODE_ENV === "production" ? "/wizme/" : "/",
+  base: process.env.NODE_ENV === "production" ? "/WIZME/" : "/",
   build: {
     outDir: "dist",
     assetsDir: "assets",
