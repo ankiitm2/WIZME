@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const About = () => {
+const About = ({ className }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorText, setCursorText] = useState("View Project");
@@ -90,12 +90,9 @@ const About = () => {
   };
 
   return (
-    <section
-      id="about"
-      className="py-20 px-6 bg-gradient-to-b from-gray-900 to-black"
-    >
+    <section id="about" className={`pb-20 px-6 bg-black ${className}`}>
       {/* Custom Cursor */}
-      {showCustomCursor && (
+      {/* {showCustomCursor && (
         <div
           className="fixed w-fit h-fit p-2 px-4 rounded-md flex items-center justify-center text-white font-light text-center pointer-events-none z-50 transition-opacity duration-300 glassMorph"
           style={{
@@ -106,7 +103,7 @@ const About = () => {
         >
           {cursorText}
         </div>
-      )}
+      )} */}
 
       <div className="max-w-full mx-auto">
         {/* Project grid */}

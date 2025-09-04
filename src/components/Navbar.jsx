@@ -64,13 +64,13 @@ const Navbar = () => {
                   to={item.href}
                   className={`px-3 py-2 rounded-md text-sm font-light transition-colors duration-200 relative group ${
                     isActiveLink(item.href)
-                      ? "text-white"
+                      ? "text-purple-500"
                       : "text-gray-300 hover:text-white"
                   }`}
                 >
                   {item.name}
                   <span
-                    className={`absolute bottom-0 left-0 h-0.5 bg-purple-500 transition-all duration-300 ${
+                    className={`absolute bottom-0 left-0 h-0.5 transition-all duration-300 ${
                       isActiveLink(item.href)
                         ? "w-full"
                         : "w-0 group-hover:w-full"

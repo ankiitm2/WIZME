@@ -1,10 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Clock, Link2, Globe } from "lucide-react";
+import dayjs from "dayjs";
+import FAQSection from "../components/FAQSection";
 
 const Contact = () => {
+  const [currentMonth, setCurrentMonth] = useState(dayjs());
+  const [selectedDate, setSelectedDate] = useState(dayjs());
+  const [timeFormat, setTimeFormat] = useState("12h");
+  const [selectedTime, setSelectedTime] = useState(null);
+
+  // Generate days for current month
+  const startOfMonth = currentMonth.startOf("month").day(); // weekday of first day
+  const daysInMonth = currentMonth.daysInMonth();
+  const daysArray = Array.from({ length: startOfMonth + daysInMonth }, (_, i) =>
+    i < startOfMonth ? null : i - startOfMonth + 1
+  );
+
+  // Example time slots
+  const baseSlots = [
+    "09:40",
+    "09:50",
+    "10:00",
+    "10:20",
+    "10:30",
+    "10:40",
+    "10:50",
+    "11:00",
+    "11:10",
+    "11:20",
+  ];
+
+  // Convert time format
+  const formatTime = (time) => {
+    const [hour, minute] = time.split(":");
+    let h = parseInt(hour, 10);
+
+    if (timeFormat === "24h") {
+      return `${h.toString().padStart(2, "0")}:${minute}`;
+    } else {
+      const suffix = h >= 12 ? "pm" : "am";
+      h = h % 12 || 12;
+      return `${h}:${minute}${suffix}`;
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center p-6 mt-20">
+    <div className="min-h-screen bg-black text-white flex items-center justify-center flex-col p-6 mt-20">
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Left Card - Profile Info */}
         <motion.div
@@ -13,7 +55,6 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
           className="bg-zinc-900 p-6 rounded-2xl border border-zinc-800"
         >
-          {/* Profile Header */}
           <div className="flex items-center mb-6">
             <img
               src="/profile.jpg"
@@ -34,7 +75,6 @@ const Contact = () => {
             journey!
           </p>
 
-          {/* Meeting Details */}
           <div className="space-y-3 text-sm">
             <div className="flex items-center">
               <Calendar size={16} className="mr-2 text-purple-400" />
@@ -63,10 +103,24 @@ const Contact = () => {
           className="bg-zinc-900 p-6 rounded-2xl border border-zinc-800"
         >
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold">September 2025</h3>
+            <h3 className="font-semibold">
+              {currentMonth.format("MMMM YYYY")}
+            </h3>
             <div className="flex space-x-2">
-              <button className="px-2 py-1 bg-zinc-800 rounded">‹</button>
-              <button className="px-2 py-1 bg-zinc-800 rounded">›</button>
+              <button
+                onClick={() =>
+                  setCurrentMonth(currentMonth.subtract(1, "month"))
+                }
+                className="px-2 py-1 bg-zinc-800 rounded"
+              >
+                ‹
+              </button>
+              <button
+                onClick={() => setCurrentMonth(currentMonth.add(1, "month"))}
+                className="px-2 py-1 bg-zinc-800 rounded"
+              >
+                ›
+              </button>
             </div>
           </div>
 
@@ -76,18 +130,24 @@ const Contact = () => {
                 {d}
               </div>
             ))}
-            {[...Array(30)].map((_, i) => (
-              <div
-                key={i}
-                className={`p-3 rounded-lg ${
-                  i === 0
-                    ? "bg-gray-500"
-                    : "bg-zinc-800 hover:bg-zinc-700 cursor-pointer"
-                }`}
-              >
-                {i + 1}
-              </div>
-            ))}
+            {daysArray.map((day, i) =>
+              day ? (
+                <div
+                  key={i}
+                  onClick={() => setSelectedDate(currentMonth.date(day))}
+                  className={`p-3 rounded-lg cursor-pointer ${
+                    selectedDate.date() === day &&
+                    selectedDate.month() === currentMonth.month()
+                      ? "bg-purple-600 text-white"
+                      : "bg-zinc-800 hover:bg-zinc-700"
+                  }`}
+                >
+                  {day}
+                </div>
+              ) : (
+                <div key={i}></div>
+              )
+            )}
           </div>
         </motion.div>
 
@@ -99,38 +159,45 @@ const Contact = () => {
           className="bg-zinc-900 p-6 rounded-2xl border border-zinc-800 flex flex-col"
         >
           <div className="flex justify-between items-center mb-4">
-            <h3 className="font-semibold">Mon 01</h3>
+            <h3 className="font-semibold">{selectedDate.format("ddd DD")}</h3>
             <div className="flex bg-zinc-800 rounded-lg">
-              <button className="px-3 py-1 text-sm bg-white text-black rounded-lg">
+              <button
+                className={`px-3 py-1 text-sm rounded-lg ${
+                  timeFormat === "12h" ? "bg-white text-black" : "text-gray-400"
+                }`}
+                onClick={() => setTimeFormat("12h")}
+              >
                 12h
               </button>
-              <button className="px-3 py-1 text-sm text-gray-400">24h</button>
+              <button
+                className={`px-3 py-1 text-sm rounded-lg ${
+                  timeFormat === "24h" ? "bg-white text-black" : "text-gray-400"
+                }`}
+                onClick={() => setTimeFormat("24h")}
+              >
+                24h
+              </button>
             </div>
           </div>
 
           <div className="space-y-2 overflow-y-auto h-[400px] pr-2">
-            {[
-              "9:40am",
-              "9:50am",
-              "10:00am",
-              "10:20am",
-              "10:30am",
-              "10:40am",
-              "10:50am",
-              "11:00am",
-              "11:10am",
-              "11:20am",
-            ].map((time) => (
+            {baseSlots.map((time) => (
               <button
                 key={time}
-                className="w-full py-3 rounded-lg bg-zinc-800 hover:bg-zinc-700"
+                onClick={() => setSelectedTime(time)}
+                className={`w-full py-3 rounded-lg ${
+                  selectedTime === time
+                    ? "bg-purple-600 text-white"
+                    : "bg-zinc-800 hover:bg-zinc-700"
+                }`}
               >
-                {time}
+                {formatTime(time)}
               </button>
             ))}
           </div>
         </motion.div>
       </div>
+      <FAQSection />
     </div>
   );
 };

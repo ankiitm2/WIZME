@@ -8,11 +8,13 @@ import {
 import PortfolioLanding from "./PortfolioLanding";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
+import CursorFollower from "./components/CursorFollower";
 
 const App = () => {
   return (
     <Router>
       <Navbar />
+      <CursorFollower />
       <Routes>
         {/* Main route */}
         <Route path="/" element={<PortfolioLanding />} />

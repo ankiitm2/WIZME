@@ -33,14 +33,29 @@ const PortfolioLanding = () => {
 
   return (
     <div className="bg-black text-white min-h-screen font-sans overflow-x-hidden">
-      <CursorFollower />
+      {/* <CursorFollower /> */}
       {/* <Navbar /> */}
-      <Hero isVisible={isVisible} />
-      <About isVisible={isVisible} />
+      <Hero
+        isVisible={isVisible}
+        className={`transition-zoom transform ${
+          isVisible["hero"] ? "scale-100 opacity-100" : "scale-75 opacity-0"
+        }`}
+      />
+      <About
+        isVisible={isVisible}
+        className={`transition-zoom transform ${
+          isVisible["about"] ? "scale-100 opacity-100" : "scale-75 opacity-25"
+        }`}
+      />
 
       {/* <RecentWorks isVisible={isVisible} /> */}
       {/* <Process isVisible={isVisible} /> */}
-      <Services isVisible={isVisible} />
+      <Services
+        isVisible={isVisible}
+        className={`transition-zoom transform ${
+          isVisible["services"] ? "scale-100 opacity-100" : "scale-95 opacity-0"
+        }`}
+      />
       {/* <Reviews isVisible={isVisible} /> */}
       {/* <Stats isVisible={isVisible} /> */}
       {/* <FAQ isVisible={isVisible} /> */}

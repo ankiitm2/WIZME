@@ -3,39 +3,11 @@ import { ChevronDown } from "lucide-react";
 import { gsap } from "gsap";
 import { Button } from "./ui/moving-border";
 
-const Hero = ({ isVisible }) => {
+const Hero = ({ isVisible, className }) => {
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
   const preContentRef = useRef(null);
   const borderRef = useRef(null);
-
-  // useEffect(() => {
-  //   // Create the rotating border animation
-  //   if (borderRef.current) {
-  //     const borderElement = borderRef.current;
-
-  //     // Clear any existing spans
-  //     borderElement.innerHTML = "";
-
-  //     // Create the border spans
-  //     for (let i = 0; i < 4; i++) {
-  //       const span = document.createElement("span");
-  //       borderElement.appendChild(span);
-  //     }
-
-  //     // Animate the border with GSAP
-  //     gsap.to(borderElement.children, {
-  //       rotation: 360,
-  //       duration: 8,
-  //       repeat: -1,
-  //       ease: "linear",
-  //       stagger: {
-  //         each: 2,
-  //         from: "start",
-  //       },
-  //     });
-  //   }
-  // }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -235,9 +207,12 @@ const Hero = ({ isVisible }) => {
   }, [isVisible.hero]);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center px-6 text-center overflow-hidden">
+    <section
+      id="hero"
+      className={`relative min-h-screen flex flex-col justify-center items-center px-6 text-center overflow-hidden ${className}`}
+    >
       {/* Dark background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-800 z-0" />
+      <div className="absolute inset-0 bg-black z-0" />
 
       {/* Canvas with smoke */}
       <canvas
@@ -259,15 +234,6 @@ const Hero = ({ isVisible }) => {
             : "opacity-0 translate-y-8"
         }`}
       >
-        {/* <div className="rotating-border-wrapper rounded-full inline-block mb-6 mx-auto relative">
-          <div className="rotating-border flex items-center px-6 py-4">
-            <span className="w-2 h-2 rounded-full bg-gray-50 mr-2 blink-dot"></span>
-            <span className="txt-content text-gray-200 text-lg">
-              Crafting Unique Brand Identities
-            </span>
-          </div>
-        </div>
-        */}
         <Button borderRadius="1.75rem" className="bg-black">
           {" "}
           <span className="w-2 h-2 rounded-full bg-gray-50 mr-2 blink-dot"></span>
@@ -303,16 +269,16 @@ const Hero = ({ isVisible }) => {
           </button>
         </div>
 
-        <div className="flex flex-col items-center space-y-4">
+        {/* <div className="flex flex-col items-center space-y-4">
           <p className="text-sm text-gray-300">Scroll down</p>
           <p className="text-sm text-gray-300">to see projects</p>
           <ChevronDown className="w-6 h-6 text-purple-300 animate-bounce" />
-        </div>
+        </div> */}
       </div>
 
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center z-10">
+      {/* <div className="absolute bottom-8 left-0 right-0 flex justify-center z-10">
         <div className="w-px h-12 bg-gradient-to-b from-purple-400 to-transparent" />
-      </div>
+      </div> */}
     </section>
   );
 };
