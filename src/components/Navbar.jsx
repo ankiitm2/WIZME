@@ -78,7 +78,7 @@ const Navbar = () => {
                   ></span>
                 </Link>
               ))}
-              <button className="RotateBtn text-sm px-6 py-2">
+              <button className="RotateBtn text-sm px-7 py-[13px]">
                 <span></span>
                 <span></span>
                 <span></span>
